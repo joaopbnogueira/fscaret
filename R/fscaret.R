@@ -79,7 +79,9 @@ cat("\n----Provided data is not data.frame object----\n")
 cat("\n----Please check the result of: is.data.frame(yourData) function ----\n")
 }
 
-
+# ensure that the data is data.frame and not a data.table or something else
+trainDF = as.data.frame(trainDF)
+testDF = as.data.frame(testDF)
 
 # Set local settings back to "normal", because loading RWeka changes locale settings
 Sys.setlocale(category = "LC_NUMERIC", locale = "C")
