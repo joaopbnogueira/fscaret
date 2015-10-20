@@ -184,31 +184,17 @@ labelsFrame <- as.data.frame(colnames(trainDF[1:(ncol(trainDF)-1)]))
 trainMatryca_nr <- matrix(data=NA,nrow=lk_row,ncol=lk_col)
 colnames(trainMatryca_nr) <- colnames(trainDF)
 
-row=0
-col=0
-
-for(col in 1:(lk_col)) {
-   for(row in 1:(lk_row)) {
-     trainMatryca_nr[row,col] <- (as.double(trainDF[row,col]))
-    }
-}
-
+# Create a train data set matrix
+trainMatryca_nr = data.matrix(sapply(trainDF, as.double))
+colnames(trainMatryca_nr) <- colnames(trainDF)
 
 # Scan dimensions of trainDF [lk_row x lk_col]
 lk_col_test = ncol(testDF)
 lk_row_test = nrow(testDF)
 
-testMatryca_nr <- matrix(data=NA,nrow=lk_row_test,ncol=lk_col_test)
+# Create a test data set matrix
+testMatryca_nr = data.matrix(sapply(testDF, as.double))
 colnames(testMatryca_nr) <- colnames(testDF)
-
-row=0
-col=0
-
-for(col in 1:(lk_col_test)) {
-   for(row in 1:(lk_row_test)) {
-     testMatryca_nr[row,col] <- (as.double(testDF[row,col]))
-    }
-  }
 
 }
 
